@@ -1,0 +1,1271 @@
+:root {
+  /* Light mode (default) */
+  --bg-dark: #f8f9fa;
+  --card-bg: #ffffff;
+  --panel-bg: #f0f2f5;
+  --text-primary: #212121;
+  --text-secondary: #606060;
+  --accent-blue: #2196f3;
+  --border-color: #e0e0e0;
+  --pulse: #e91e63;
+  --temp: #ff5722;
+  --spo2: #00bcd4;
+  --bp: #2196f3;
+  --ecg-line: #4caf50;
+  --map-accent: #ff6d00;
+}
+
+/* Dark mode */
+body.dark-mode .patient-detail {
+  --bg-dark: #121212;
+  --card-bg: #1e1e1e;
+  --panel-bg: #252525;
+  --text-primary: #e0e0e0;
+  --text-secondary: #9e9e9e;
+  --accent-blue: #0d47a1;
+  --border-color: #333;
+}
+
+/* Dashboard container styles */
+.dashboard {
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  color: var(--text-primary);
+}
+
+body.dark-mode .dashboard {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Loading and error states */
+.loading, .error {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+}
+
+.error h3 {
+  color: #dc3545;
+  margin-bottom: 10px;
+}
+
+/* Patient Header Styles */
+.patient-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.patient-info h1 {
+  color: var(--text-primary);
+  font-size: 28px;
+  margin-bottom: 5px;
+}
+
+.patient-info h2 {
+  font-size: 20px;
+  font-weight: normal;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+.patient-details {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.detail-group {
+  margin-bottom: 10px;
+  min-width: 100px;
+}
+
+.detail-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+
+.detail-value {
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.patient-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--panel-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 3px solid var(--accent-blue);
+}
+
+.initials {
+  font-size: 36px;
+  font-weight: bold;
+  color: var(--text-secondary);
+}
+
+/* Vitals Grid Styles */
+.vitals-container {
+  margin-bottom: 30px;
+}
+
+.section-title {
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.vital-signs {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+body.dark-mode .vital-signs {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.vital-signs h2 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--accent-blue);
+  padding-bottom: 0.5rem;
+}
+
+.vitals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.vital-card {
+  background: var(--panel-bg);
+  border-radius: 10px;
+  padding: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid var(--border-color);
+}
+
+body.dark-mode .vital-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vital-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .vital-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.vital-card h3 {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.vital-card .value {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Values status classes */
+.value.elevated {
+  color: #f44336;
+}
+
+.value.low {
+  color: #2196f3;
+}
+
+.value.normal {
+  color: #4caf50;
+}
+
+/* Fever status - temperature displays in red */
+.value.fever {
+  color: #f44336;
+  font-weight: bold;
+}
+
+/* Alert classes */
+.value.moderate-risk {
+  color: #ff9800;
+}
+
+.value.high-risk {
+  color: #f44336;
+}
+
+/* Color-coded vital signs */
+.pulse { color: var(--pulse); }
+.temp { color: var(--temp); }
+.spo2 { color: var(--spo2); }
+.bp { color: var(--bp); }
+
+/* Analysis Section */
+.analysis-section {
+  margin-top: 30px;
+}
+
+.analysis-title {
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.analysis-bars {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.bar-container {
+  flex: 1;
+}
+
+.bar-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.bar {
+  height: 8px;
+  background-color: var(--panel-bg);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.bar-fill {
+  height: 100%;
+  background-color: var(--accent-blue);
+}
+
+.range-label {
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+/* ECG Section */
+.ecg-section {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+body.dark-mode .ecg-section {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ecg-section h2 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--accent-blue);
+  padding-bottom: 0.5rem;
+}
+
+.ecg-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ecg-chart-container {
+  height: 300px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--panel-bg);
+  padding: 1rem;
+}
+
+.ecg-summary {
+  width: 200px;
+  background-color: var(--panel-bg);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.ecg-title {
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.ecg-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.ecg-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.chart-container {
+  background: var(--panel-bg);
+  border-radius: 6px;
+  padding: 0.4rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  height: 120px;
+  position: relative;
+  border: 1px solid var(--border-color);
+  width: 5cm;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.chart-container h3 {
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  margin: 0 0 0.1rem 0;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+body.dark-mode .chart-container {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* GPS Tracking Section */
+.gps-section {
+  margin-top: 30px;
+}
+
+.gps-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.gps-map-container {
+  flex: 1;
+  min-width: 300px;
+  background-color: var(--panel-bg);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.gps-summary {
+  width: 200px;
+  background-color: var(--panel-bg);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.gps-title {
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.gps-value {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.gps-meta {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.emergency-button {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.emergency-button:hover {
+  background-color: #f44336;
+}
+
+.location-status {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.status-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-active {
+  background-color: #4caf50;
+}
+
+.status-inactive {
+  background-color: #f44336;
+}
+
+/* Map Section */
+.map-section {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+body.dark-mode .map-section {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.map-section h2 {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--accent-blue);
+  padding-bottom: 0.5rem;
+}
+
+.last-known-timestamp {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: rgba(255, 152, 0, 0.1);
+  border-left: 3px solid #FF9800;
+  border-radius: 0 4px 4px 0;
+}
+
+.map-container {
+  height: 400px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* Patient Info Section */
+.patient-info-section {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-light);
+}
+
+.patient-info-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.patient-avatar {
+  width: 100px;
+  height: 100px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-md);
+}
+
+.patient-avatar .initials {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.patient-basic-info {
+  flex-grow: 1;
+}
+
+.patient-basic-info h1 {
+  color: var(--text-primary);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-item .label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-item .value {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.info-item .value.status {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.info-item .value.status.normal {
+  background: var(--success);
+  color: #000;
+}
+
+.info-item .value.status.critical {
+  background: var(--danger);
+  color: white;
+}
+
+.info-item .value.status.warning {
+  background: var(--warning);
+  color: #000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .patient-info-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .patient-avatar {
+    margin-bottom: 1rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .info-item {
+    align-items: center;
+  }
+
+  .patient-basic-info h1 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .patient-detail {
+    padding: 1rem;
+  }
+
+  .vital-signs,
+  .ecg-section,
+  .map-section {
+    padding: 1rem;
+  }
+
+  .ecg-chart-container,
+  .map-container {
+    height: 300px;
+  }
+
+  .vital-card .value {
+    font-size: 1.5rem;
+  }
+}
+
+/* Emergency Alert Styles */
+.emergency-alert {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-left: 10px solid #ccc;
+  position: relative;
+}
+
+.emergency-alert.moderate-risk {
+  background-color: rgba(255, 152, 0, 0.1);
+  border-left-color: #FF9800;
+}
+
+.emergency-alert.high-risk {
+  background-color: rgba(244, 67, 54, 0.1);
+  border-left-color: #F44336;
+  animation: pulse-bg 2s infinite alternate;
+}
+
+.emergency-alert.fever {
+  background-color: rgba(255, 23, 68, 0.1);
+  border-left-color: #FF1744;
+  border: 2px solid #FF1744;
+  border-left-width: 10px;
+}
+
+.emergency-alert h2 {
+  color: var(--text-primary);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.emergency-alert.high-risk h2,
+.emergency-alert.fever h2 {
+  color: #D50000;
+}
+
+.emergency-alert p {
+  color: var(--text-secondary);
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+.emergency-alert.high-risk p,
+.emergency-alert.fever p {
+  font-weight: bold;
+}
+
+.manual-alert-indicator {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--text-secondary);
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+/* Value status colors */
+.value.moderate-risk {
+  color: #FF9800;
+}
+
+.value.high-risk {
+  color: #F44336;
+  font-weight: bold;
+}
+
+/* Mute alert button */
+.mute-alert-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mute-alert-btn:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
+}
+
+.mute-alert-btn.muted {
+  background-color: rgba(244, 67, 54, 0.2);
+}
+
+/* Pulsing animation for high risk alert */
+@keyframes pulse-bg {
+  0% {
+    background-color: rgba(244, 67, 54, 0.1);
+  }
+  100% {
+    background-color: rgba(244, 67, 54, 0.25);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px 3px rgba(76, 175, 80, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+/* Update info */
+.update-info {
+  text-align: right;
+  margin-top: 2rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Manual Alert Controls */
+.manual-alert-controls {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-light);
+}
+
+body.dark-mode .manual-alert-controls {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.manual-alert-controls h3 {
+  margin-top: 0;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0.5rem;
+}
+
+.alert-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.alert-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-width: 180px;
+}
+
+.alert-btn.moderate-risk {
+  background-color: #FF9800;
+  box-shadow: 0 2px 4px rgba(255, 152, 0, 0.3);
+}
+
+.alert-btn.moderate-risk:hover {
+  background-color: #F57C00;
+}
+
+.alert-btn.moderate-risk.active {
+  background-color: #F57C00;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+.alert-btn.high-risk {
+  background-color: #F44336;
+  box-shadow: 0 2px 4px rgba(244, 67, 54, 0.3);
+}
+
+.alert-btn.high-risk:hover {
+  background-color: #D32F2F;
+}
+
+.alert-btn.high-risk.active {
+  background-color: #D32F2F;
+  box-shadow: 0 2px 8px rgba(244, 67, 54, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Fever alert button */
+.alert-btn.fever {
+  background-color: #FF1744;
+  box-shadow: 0 2px 4px rgba(255, 23, 68, 0.3);
+}
+
+.alert-btn.fever:hover {
+  background-color: #D50000;
+}
+
+.alert-btn.fever.active {
+  background-color: #D50000;
+  box-shadow: 0 2px 8px rgba(255, 23, 68, 0.5);
+  transform: translateY(-2px);
+}
+
+.alert-btn.clear {
+  background-color: #607D8B;
+  box-shadow: 0 2px 4px rgba(96, 125, 139, 0.3);
+}
+
+.alert-btn.clear:hover {
+  background-color: #455A64;
+}
+
+.alert-info {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+.manual-indicator {
+  font-size: 0.7rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .alert-buttons {
+    flex-direction: column;
+  }
+  
+  .alert-btn {
+    width: 100%;
+  }
+}
+
+.vital-signs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.download-csv-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.download-csv-btn:hover {
+  background-color: #45a049;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.download-csv-btn:active {
+  transform: translateY(1px);
+}
+
+.download-csv-btn.loading {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.download-csv-btn.loading:hover {
+  background-color: #cccccc;
+  box-shadow: none;
+}
+
+/* Dark mode styles for the button */
+body.dark-mode .download-csv-btn {
+  background-color: #2e7d32;
+}
+
+body.dark-mode .download-csv-btn:hover {
+  background-color: #388e3c;
+}
+
+body.dark-mode .download-csv-btn.loading {
+  background-color: #555555;
+}
+
+/* Weekly Records Section */
+.weekly-records-section {
+  background-color: var(--card-bg);
+  border-radius: 6px;
+  padding: 0.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+body.dark-mode .weekly-records-section {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.section-header h2 {
+  color: var(--text-primary);
+  font-size: 1rem;
+  border-bottom: 1px solid var(--accent-blue);
+  padding-bottom: 0.25rem;
+  margin: 0;
+}
+
+.toggle-debug-btn {
+  background-color: #607D8B;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.7rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toggle-debug-btn:hover {
+  background-color: #455A64;
+}
+
+body.dark-mode .toggle-debug-btn {
+  background-color: #455A64;
+}
+
+body.dark-mode .toggle-debug-btn:hover {
+  background-color: #37474F;
+}
+
+.weekly-records-section h2 {
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--accent-blue);
+  padding-bottom: 0.5rem;
+}
+
+.historical-charts-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.debug-info {
+  background-color: var(--panel-bg);
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.debug-info p {
+  margin: 0;
+  padding: 0.15rem 0.3rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 3px;
+}
+
+body.dark-mode .debug-info p {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.weekly-records-section .historical-charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 5cm);
+  gap: 0.8rem;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.chart-container {
+  background: var(--panel-bg);
+  border-radius: 6px;
+  padding: 0.4rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  height: 120px;
+  position: relative;
+  border: 1px solid var(--border-color);
+  width: 5cm;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.chart-container h3 {
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  margin: 0 0 0.1rem 0;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+body.dark-mode .chart-container {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.loading-section, .error-section {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  background: var(--panel-bg);
+  border-radius: 10px;
+}
+
+.error-section {
+  color: #e53935;
+}
+
+/* Responsive design for charts */
+@media (max-width: 768px) {
+  .weekly-records-section .historical-charts-grid {
+    grid-template-columns: repeat(2, 4.5cm);
+    gap: 0.5rem;
+  }
+  
+  .chart-container {
+    width: 4.5cm;
+  }
+}
+
+@media (max-width: 480px) {
+  .weekly-records-section .historical-charts-grid {
+    grid-template-columns: repeat(2, 4cm);
+  }
+}
+
+/* Fever card styling */
+.vital-card.fever-card {
+  background-color: rgba(244, 67, 54, 0.1);
+  border: 1px solid #F44336;
+}
+
+.vital-card.fever-card h3 {
+  color: #F44336;
+  font-weight: bold;
+}
+
+/* Blood Pressure Indicators */
+.bp-indicators {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.bp-category {
+  display: flex;
+  align-items: center;
+}
+
+.bp-high, .bp-low, .bp-normal {
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+
+.bp-high {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #f44336;
+}
+
+.bp-low {
+  background-color: rgba(33, 150, 243, 0.15);
+  color: #2196f3;
+}
+
+.bp-normal {
+  background-color: rgba(76, 175, 80, 0.15);
+  color: #4caf50;
+}
+
+.bp-change-indicator {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.bp-trend-up {
+  color: #f44336;
+}
+
+.bp-trend-down {
+  color: #2196f3;
+}
+
+/* Vital card styling - add animation for BP changes */
+.vital-card.bp-changing {
+  animation: pulse-subtle 2s infinite;
+}
+
+@keyframes pulse-subtle {
+  0% {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/* Location card styling */
+.vital-card.location-card {
+  background-color: var(--panel-bg);
+}
+
+.location-status {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  gap: 5px;
+}
+
+.location-status.active {
+  color: #4caf50;
+}
+
+.location-status.stale {
+  color: #ff9800;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-indicator.active {
+  background-color: #4CAF50;
+  box-shadow: 0 0 5px #4CAF50;
+  animation: pulse 2s infinite;
+}
+
+.status-indicator.stale {
+  background-color: #ff9800;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+  }
+  50% {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px 3px rgba(76, 175, 80, 0.4);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+.no-location-container {
+  text-align: center;
+  padding: 15px;
+}
+
+.no-location {
+  font-size: 1.1em;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.no-location-subtitle {
+  font-size: 0.9em;
+  color: #999;
+}
+
+.location-status {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.status-indicator.active {
+  background-color: #4CAF50;
+}
+
+.status-indicator.stale {
+  background-color: #FFA726;
+}

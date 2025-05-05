@@ -1,0 +1,392 @@
+/* Dashboard.css - Enhanced Design */
+:root {
+  /* Base colors */
+  --primary-color: #1976d2;
+  --secondary-color: #2196f3;
+  --accent-color: #4caf50;
+  
+  /* Background colors - Light mode */
+  --bg-color: #f8f9fa;
+  --card-bg: #ffffff;
+  --panel-bg: #f0f2f5;
+  
+  /* Text colors - Light mode */
+  --text-primary: #212121;
+  --text-secondary: #424242;
+  --text-muted: #757575;
+  
+  /* Status colors */
+  --success: #4caf50;
+  --warning: #ff9800;
+  --danger: #f44336;
+  --info: #2196f3;
+  
+  /* Vital signs specific colors */
+  --temp: #f44336;      /* Temperature - warm red */
+  --pulse: #e91e63;     /* Heart rate - pink */
+  --bp: #2196f3;        /* Blood pressure - light blue */
+  --spo2: #00bcd4;      /* SpO2 - teal */
+  --ecg: #4caf50;       /* ECG line - bright green */
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #2196f3, #1976d2);
+  --gradient-success: linear-gradient(135deg, #4caf50, #388e3c);
+  --gradient-warning: linear-gradient(135deg, #ff9800, #f57c00);
+  --gradient-danger: linear-gradient(135deg, #f44336, #d32f2f);
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+  
+  /* Border colors - Light mode */
+  --border-light: rgba(0, 0, 0, 0.1);
+  --border-medium: rgba(0, 0, 0, 0.15);
+
+  /* Light mode status colors */
+  --critical-color: #f44336;
+  --attention-color: #ff9800;
+  --normal-color: #4caf50;
+  --sidebar-bg: linear-gradient(to bottom, #e3f2fd, #bbdefb);
+  --sidebar-text: #0d47a1;
+}
+  
+.dark-mode {
+  --primary-color: #64b5f6;  /* Lighter blue for better visibility */
+  --secondary-color: #90caf9;
+  --accent-color: #4db6ac;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b3b3b3;
+  --text-muted: #757575;
+  --bg-color: #121212;
+  --card-bg: #1e272e;
+  --panel-bg: #252525;
+  --sidebar-bg: linear-gradient(to bottom, #0f1923, #1a2639);
+  --sidebar-text: #ffffff;
+  --critical-color: #ff5252;
+  --attention-color: #ffd740;
+  --normal-color: #69f0ae;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
+  --border-light: rgba(255, 255, 255, 0.1);
+  --border-medium: rgba(255, 255, 255, 0.15);
+}
+  
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', 'Roboto', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+  
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+  
+.sidebar {
+  width: 280px;
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-md);
+  position: fixed;
+  height: 100vh;
+  z-index: 10;
+}
+  
+.hospital-info h1 {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 15px;
+  text-align: center;
+  font-weight: 600;
+}
+  
+.doctor-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.doctor-details {
+  text-align: center;
+}
+  
+.doctor-details h2 {
+  color: var(--sidebar-text);
+  font-size: 1.2rem;
+  margin: 5px 0;
+  font-weight: 600;
+}
+  
+.doctor-details p {
+  color: var(--sidebar-text);
+  opacity: 0.9;
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+  
+.clock-widget {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.dark-mode .clock-widget {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+  
+.time {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+}
+  
+.date {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+  
+.theme-toggle {
+  margin-top: auto;
+  margin-bottom: 40px;
+  padding: 0 20px;
+}
+  
+.theme-toggle button {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 500;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-sm);
+}
+  
+.theme-toggle button:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+  
+.main-content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 300px;
+  overflow-y: auto;
+}
+  
+.dashboard-header {
+  margin-bottom: 30px;
+}
+  
+.dashboard-header h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+  
+.patients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+  
+.patient-card {
+  background-color: var(--card-bg);
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border-left: none;
+  border: 1px solid var(--border-light);
+}
+
+.dark-mode .patient-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+  
+.patient-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  border-radius: 10px 0 0 10px;
+}
+  
+.status-critical::before {
+  background-color: var(--critical-color);
+}
+  
+.status-attention::before {
+  background-color: var(--attention-color);
+}
+  
+.status-normal::before {
+  background-color: var(--normal-color);
+}
+  
+.patient-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+  
+.patient-card h3 {
+  margin-top: 0;
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+  
+.patient-card p {
+  color: var(--text-secondary);
+  margin: 8px 0;
+  font-size: 0.95rem;
+}
+  
+/* Status text styling */
+.status {
+  font-weight: 600;
+  padding: 5px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.status.normal {
+  color: var(--normal-color);
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.status.warning {
+  color: var(--attention-color);
+  background-color: rgba(255, 152, 0, 0.1);
+}
+
+.status.critical {
+  color: var(--critical-color);
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+/* Make sure the status text is visible in both light and dark modes */
+body:not(.dark-mode) .status.normal {
+  color: #388E3C;
+}
+
+body:not(.dark-mode) .status.warning {
+  color: #F57C00;
+}
+
+body:not(.dark-mode) .status.critical {
+  color: #D32F2F;
+}
+  
+a {
+  text-decoration: none;
+  color: inherit;
+}
+  
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+  
+.add-patient-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+  box-shadow: var(--shadow-sm);
+}
+  
+.add-patient-btn:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: relative;
+    height: auto;
+    padding: 10px;
+  }
+  
+  .main-content {
+    margin-left: 0;
+    padding: 15px;
+  }
+  
+  .patients-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Alert Badge Styles */
+.alert-badge {
+  background-color: #F44336;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-top: 8px;
+  text-align: center;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Make the critical status more prominent for alerts */
+.patient-card.status-critical {
+  border-width: 2px;
+  box-shadow: 0 4px 8px rgba(244, 67, 54, 0.3);
+}
+
+.patient-card.status-attention {
+  border-width: 2px;
+  box-shadow: 0 4px 8px rgba(255, 152, 0, 0.3);
+}
+  
